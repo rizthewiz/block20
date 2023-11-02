@@ -43,7 +43,8 @@ function addNumber(event) {
 // When Sort All clicked all numbers are sorted
 
 function sortFirst(e) {
-  // e.preventDefault();
+  sortedNumbers.push(numbers[0]);
+
   if (numbers[0] % 2 === 1) {
     const sortedEl = document.createElement("p");
     sortedEl.textContent = numbers.shift();
@@ -56,6 +57,7 @@ function sortFirst(e) {
     sortbox.appendChild(sortedEl);
   }
   update();
+  console.log(sortedNumbers);
 }
 
 function sortArray(e) {
