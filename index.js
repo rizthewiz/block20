@@ -13,7 +13,8 @@ const sortedNumbers = [];
 
 // add events here
 form.addEventListener("submit", addNumber);
-sortOne.addEventListener("click", sort);
+sortOne.addEventListener("click", sortFirst);
+sortAll.addEventListener("click", sortArray);
 
 update();
 
@@ -41,4 +42,24 @@ function addNumber(event) {
 // When Sort 1 clicked first number in bank is removed and placed in odd or even
 // When Sort All clicked all numbers are sorted
 
-function sortOne(event) {}
+function sortFirst(e) {
+  // e.preventDefault();
+  if (numbers[0] % 2 === 1) {
+    const sortedEl = document.createElement("p");
+    sortedEl.textContent = numbers.shift();
+    const sortbox = odds.querySelector("output");
+    sortbox.appendChild(sortedEl);
+  } else {
+    const sortedEl = document.createElement("p");
+    sortedEl.textContent = numbers.shift();
+    const sortbox = evens.querySelector("output");
+    sortbox.appendChild(sortedEl);
+  }
+  update();
+}
+
+function sortArray(e) {
+  while (numbers.length > 0) {
+    sortFirst();
+  }
+}
